@@ -17,4 +17,7 @@ find ${RPROOT} -type f -exec chmod o+x {} \;
 # symlink the RPROOT to WEBROOT
 ln -s ${RPROOT} ${WEBROOT}
 
+# remove the footer that tkl adds
+echo "# removed by author" > /etc/apache2/mods-available/substitute.conf  
+
 # done
