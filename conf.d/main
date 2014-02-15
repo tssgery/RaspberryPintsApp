@@ -3,12 +3,13 @@
 WEBROOT=/var/www
 WEBBACKUP=/var/www-old
 RPROOT=/var/RaspberryPints
+BRANCH=rc-1.0.0.x
 
 # rename the old webroot to the backupname
 mv ${WEBROOT} ${WEBBACKUP}
 
 # copy down the RaspberryPints code
-git clone https://github.com/RaspberryPints/RaspberryPints.git ${RPROOT}
+git clone -b ${BRANCH} https://github.com/tssgery/RaspberryPints.git ${RPROOT}
 
 # make sure the files are owned by www-data and the files are executable by www-data
 chown -R www-data:www-data ${RPROOT}
