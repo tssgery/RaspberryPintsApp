@@ -1,15 +1,17 @@
 #!/bin/bash -ex
 
 WEBROOT=/var/www
-WEBBACKUP=/var/www-old
+WEBBACKUP=${WEBROOT}-$(date +"%Y%m%d")
 RPROOT=/var/RaspberryPints
-BRANCH=rc-1.0.0.x
+BRANCH=master
+OWNER=RaspberryPints
 
 # rename the old webroot to the backupname
+echo "Renaming ${WEBROOT} to ${WEBBACKUP}"
 mv ${WEBROOT} ${WEBBACKUP}
 
 # copy down the RaspberryPints code
-git clone -b ${BRANCH} https://github.com/tssgery/RaspberryPints.git ${RPROOT}
+git clone -b ${BRANCH} https://github.com/${OWNER}/RaspberryPints.git ${RPROOT}
 
 # make sure the files are owned by www-data and the files are executable by www-data
 chown -R www-data:www-data ${RPROOT}
